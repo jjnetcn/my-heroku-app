@@ -41,7 +41,7 @@ def refresh():
         cursor.execute(query2)
         result2 = cursor.fetchone()
         ramscnt = result2[0] if result2 else 0
-        print(f"rams: {ramcnt}")
+        print(f"rams: {ramscnt}")
 
         # 查询3：bramcnt
         query3 = "SELECT COUNT(*) FROM eos_CURRENCY_BAL WHERE contract = 'ram.defi' AND currency = 'BRAM' AND amount >= 1024 * 1024"
@@ -49,7 +49,7 @@ def refresh():
         cursor.execute(query3)
         result3 = cursor.fetchone()
         bramcnt = result3[0] if result3 else 0
-        print(f"bramcnt: {ramcnt}")
+        print(f"bramcnt: {bramcnt}")
 
         # 查询4：distcnt
         query4 = """
@@ -65,7 +65,7 @@ def refresh():
         cursor.execute(query4)
         result4 = cursor.fetchone()
         distcnt = result4[0] if result4 else 0
-        print(f"distcnt: {ramcnt}")
+        print(f"distcnt: {distcnt}")
         
         cursor.close()
         conn.close()
