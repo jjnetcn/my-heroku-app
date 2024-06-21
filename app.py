@@ -33,6 +33,7 @@ def refresh():
         cursor.execute(query1)
         result1 = cursor.fetchone()
         ramcnt = result1[0] if result1 else 0
+        print(f"ram: {ramcnt}")
 
         # 查询2：ramscnt
         query2 = "SELECT COUNT(*) FROM eos_CURRENCY_BAL WHERE contract = 'newrams.eos' AND currency = 'RAMS' AND amount > 21226"
@@ -40,6 +41,7 @@ def refresh():
         cursor.execute(query2)
         result2 = cursor.fetchone()
         ramscnt = result2[0] if result2 else 0
+        print(f"rams: {ramcnt}")
 
         # 查询3：bramcnt
         query3 = "SELECT COUNT(*) FROM eos_CURRENCY_BAL WHERE contract = 'ram.defi' AND currency = 'BRAM' AND amount >= 1024 * 1024"
@@ -47,6 +49,7 @@ def refresh():
         cursor.execute(query3)
         result3 = cursor.fetchone()
         bramcnt = result3[0] if result3 else 0
+        print(f"bramcnt: {ramcnt}")
 
         # 查询4：distcnt
         query4 = """
@@ -62,6 +65,7 @@ def refresh():
         cursor.execute(query4)
         result4 = cursor.fetchone()
         distcnt = result4[0] if result4 else 0
+        print(f"distcnt: {ramcnt}")
         
         cursor.close()
         conn.close()
@@ -74,7 +78,7 @@ def refresh():
 
 # 程序启动时首先执行一次
 refresh()
-print(f"ramholders: {ramcnt}")
+
 
 @app.route('/')
 def display_ramcnt():
