@@ -36,12 +36,14 @@ def refresh():
 
         # 查询2：ramscnt
         query2 = "SELECT COUNT(*) FROM eos_CURRENCY_BAL WHERE contract = 'newrams.eos' AND currency = 'RAMS' AND amount > 21226"
+        cursor = conn.cursor()
         cursor.execute(query2)
         result2 = cursor.fetchone()
         ramscnt = result2[0] if result2 else 0
 
         # 查询3：bramcnt
         query3 = "SELECT COUNT(*) FROM eos_CURRENCY_BAL WHERE contract = 'ram.defi' AND currency = 'BRAM' AND amount >= 1024 * 1024"
+        cursor = conn.cursor()
         cursor.execute(query3)
         result3 = cursor.fetchone()
         bramcnt = result3[0] if result3 else 0
@@ -56,6 +58,7 @@ def refresh():
             SELECT account_name FROM eos_CURRENCY_BAL WHERE contract = 'ram.defi' AND currency = 'BRAM' AND amount >= 1024 * 1024
         ) a
         """
+        cursor = conn.cursor()
         cursor.execute(query4)
         result4 = cursor.fetchone()
         distcnt = result4[0] if result4 else 0
